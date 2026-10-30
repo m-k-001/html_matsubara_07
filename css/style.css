@@ -1,0 +1,534 @@
+/* ここから下に記載していく */
+
+/* 共通の設定 */
+html {
+  scroll-behavior: smooth;  /* 画面スクロールを滑らかにする */
+}
+
+body {
+    font-family: 'Noto Sans JP', "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    color: #222222;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.l-wrap{
+    max-width: 1200px;          /* 画面の最大幅を1200pxに制限 */
+    margin: 0 auto;         /* 全体を中心に */
+}
+
+
+
+
+/* header */
+
+.header {
+    display: flex;                      /* ロゴとナビをフレックスで横並び */
+    justify-content: space-between;     /* 両端にくっつける */
+}
+
+.header__logo {
+    display: flex;              /* フレックスにして */
+    align-items: center;         /* ロゴの縦軸中心に */
+}
+
+.header__logo__item {
+    width: clamp(280px, 23.38vw + 100.44px, 381px);           /* 画面幅に合わせロゴの大きさ調整 */
+    margin-left: clamp(10px, 9.259vw - 61.111px, 50px);       /* ロゴの左に隙間 */
+}
+
+.header__nav {
+    margin-top: 50px;           /* ナビの上に隙間 */
+    margin-bottom: 50px;         /* ナビの下に隙間 */
+    margin-right: clamp(10px, 9.259vw - 61.111px, 50px);          /* 画面の大きさに合わせナビの右に隙間 */
+}
+
+.header__nav-item {
+    display: flex;           /* ナビを横並びに */
+    column-gap: clamp(10px, 9.259vw - 61.111px, 50px);       /* 画面の大きさに合わせナビの文字の間に隙間 */
+}
+
+.header__nav-item__text {
+    font-size: clamp(14px, 10.82px + 0.85vw, 21px);        /* 画面の大きさに合わせナビの文字の大きさ指定 */
+}
+
+.header__nav-item__text a{
+    text-decoration: none;      /* ナビのアンダーラインを消す */
+}
+
+.header__nav-item__text a:link{
+    color: #222222;      /* 訪問前にナビの色を変えない */
+}
+
+.header__nav-item__text a:visited{      /* ↑ linkの後に ※書く順番注意 */
+    color: #222222;      /* 訪問後もナビの色を変えない */
+}
+
+.header__nav-item__text a:hover{    /* ↑ visitedの後に ※書く順番注意 */
+    color: #007bff;        /* マウスオーバーで青 */
+    text-decoration: underline;     /* マウスオーバーで下線 */
+}
+
+
+/* main */
+.main{
+    display: flex;          /* フレックスで各子要素の間に隙間を */
+    flex-direction: column; /* 縦にして */
+    row-gap: 60px;          /* 隙間を入れる */
+}
+
+/* メインビジュアル */
+
+.main-visual{
+    aspect-ratio: 1365 / 500;   /* 画像の比率を保つ */
+    background-image: url(../img/mainbg.png);
+    background-size: cover;     /* 切り抜かれつつ全体を覆う */
+    display: flex;              /* フレックスで横並び */
+    flex-direction: column;     /* 横並びを縦並びに */
+    justify-content: center;    /* 縦軸中心 */
+    align-items: center;        /* 横軸中心 */
+}
+
+.main-visual__main{
+    font-size: clamp(24px, 13.09px + 2.91vw, 48px);     /* 画面の大きさに合わせ文字の大きさ指定 */
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.main-visual__sub{
+    font-size: clamp(16px, 8.73px + 1.94vw, 32px);      /* 画面の大きさに合わせ文字の大きさ指定 */
+    color: #ffffff;
+}
+
+
+/* ABOUT */
+.about{
+    text-align: center;
+}
+
+.about__title{
+    margin-bottom: 30px;    /* 下に隙間 */
+    color: #ffd61a;
+}
+
+.about__sub-title{
+    font-size: 18px;
+    margin-bottom: 60px;
+}
+
+.about__text01{
+    margin-bottom: 40px;
+    margin: 0 12px 40px 12px;
+}
+
+.about__text02{
+    margin: 0 12px 40px 12px;
+    line-height: 150%;  /* フォントの行間広げる */
+}
+
+.about__text03{
+    margin: 0 12px 40px 12px;
+    line-height: 150%;  /* フォントの行間広げる */
+}
+.about__text04{
+    margin: 0 12px 80px 12px;
+    line-height: 150%;  /* フォントの行間広げる */
+}
+/* 写真スライドショー */
+.about__slide {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.about__slide__item {
+  display: flex;
+  /* 20秒かけて、等速（linear）で、永遠（infinite）に流す */
+  animation: eternalLoop 20s linear infinite;
+}
+
+/* 中の写真 */
+.about__slide__item img {
+  width: 385px;
+  height: auto;
+  display: block;
+}
+
+/* 永遠ループを完璧につなぐアニメーションの計算 */
+@keyframes eternalLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 1セット目の4枚分（幅385px × 4 ＋ 隙間20px × 4 ＝ -1620px）動いた瞬間に0pxに戻す */
+    transform: translateX(-1540px); 
+  }
+}
+
+
+
+
+/* Course */
+.course__title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.course__explanation{
+    text-align: center;
+    line-height: 150%;  /* フォントの行間広げる */
+    margin: 0 40px 60px 40px;
+}
+
+.course__item__img{
+    /* 写真調整 1200pxで最大600px、375pxで最小300px */
+    width: clamp(300px, 163.64px + 36.36vw, 600px); 
+    height: auto;
+}
+
+.course__card__item{
+    display: flex;  /* フレックスで横並び */
+    align-items: center;    /* テキストを中心に */
+}
+
+.course__card__item--reverse{
+    flex-direction: row-reverse;    /* 2番目だけ左右入替 */
+}
+
+.course__card__item__text{
+    /* 画面幅で可変テキストエリア幅指定 margin分-50px */
+    width: clamp(300px, 240.91px + 15.76vw, 430px); 
+    margin: 50px;
+}
+
+.course__card__item__text__title{
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 40px;
+}
+
+.course__card__item__text__explanation{
+    line-height: 150%;  /* フォントの行間広げる */
+}
+
+
+/* news */
+.news{
+    text-align: center;     /* タイトルテキストとボタンを真ん中へ */
+}
+
+.news__title{
+    margin-bottom: 30px;    /* 下に隙間 */
+    color: #ffd61a;
+}
+
+.news__sub-title{
+    margin-bottom: 60px;     /* 下に隙間 */
+}
+
+.news__item{
+    display: grid;       /* グリッドを使用 */
+    grid-template-columns: repeat(auto-fill, 300px);     /* 画面幅1200pxに合わせカードを並べる */
+    gap: 30px;
+    justify-content: center;    /* カードを中央よせ */
+    column-gap: 30px; 
+}
+
+.news__item__card{      /* マウスが乗った時、外れたとき両方に適用のためめこっちに記載 */
+    transition: opacity 0.3s ease, background-color 0.3s ease; /* 変化を滑らかに */
+}
+
+.news__item__card:hover{
+    opacity: 0.7; /* マウスオーバーでちょっと透明にする */
+    background-color: #fdf2c5;
+}
+
+.news__item__card__date{
+    text-align: start;      /* テキスト左よせ */
+    margin-top: 30px;
+    margin-bottom: 24px;
+}
+
+.news__item__card__text{
+    text-align: start;      /* テキスト左よせ */
+    font-size: 0.9rem;
+    letter-spacing: -0.01rem;
+    line-height: 150%;  /* フォントの行間広げる */
+}
+
+.news__btn{
+    width: 294px;
+    height: 54px;
+    background-color: #ffd61a;
+    color: #ffffff;
+    font-size: 18px;
+    border: solid 2px #ffd61a;
+    cursor: pointer;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 変化を滑らかに */
+}
+.news__btn:hover{
+    background-color: #ffffff;
+    color: #ffd61a;
+}
+
+
+
+/* ACCESS */
+.access{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.access__title{
+    margin-bottom: 30px;
+}
+
+.access__sub-title{
+    margin-bottom: 60px;
+}
+
+.access__map{
+    width: 100%;
+    aspect-ratio: 3 / 1; /* 地図の比率指定 */
+}
+
+.access__info{
+    width: 500px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.access__info__text{
+    height: 50px;
+    display: flex;
+}
+
+.access__info__text__dt{
+    width: 150px;
+}
+
+
+/* CONTACT */
+.contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact__title{
+    margin-bottom: 30px;
+}
+
+.contact__sub-title{
+    margin-bottom: 60px;
+}
+
+.contact__text-wait{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact__text-warning{
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+/* CONTACT form */
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form__item{
+    display: flex;          /* タイトルとフォームパーツを横並び */
+    align-items: center;    /* タイトルを縦中央に */
+}
+
+.form__item__title{
+    width: 240px;        /* タイトル部の横幅 */
+    line-height: 150%;  /* フォントの行間広げる */
+}
+
+.form__item__parts{
+    width: 400px;       /* フォームパーツ部の横幅 */
+}
+
+.form__item__parts__text{
+    width: 328px;       /* 名前・カナ・メアドの大きさと隙間調整 */
+    height: 36px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.form__item__parts_select{
+    width: 336px;       /* セレクトボックスの大きさと隙間調整 */
+    height: 46px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.form__item__parts__check{
+    display: flex;
+    flex-direction: column;     /* チェックボックスを縦並び */
+    row-gap: 24px;
+}
+
+.form__item__parts__check__item{
+    margin-left: 10px;      /* テキストとチェックボックスの隙間 */
+}
+
+.up-ambition{
+    align-self: start;  /* 志望動機テキスト上寄せ */
+}
+
+.form__item__parts_area{
+    width: 328px;       /* 詳細エリアの大きさと隙間調整 */
+    height: 100px;
+    margin-top: 24px;
+    margin-bottom: 30px;
+}
+
+.up-detail{
+    align-self: start;  /* 詳細テキスト上寄せ */
+    margin-top: 24px;   /* 隙間付け */
+}
+
+.form__item__check-br{
+    display: none;          /* チェックボックステキストの改行無効 */
+}
+
+.form__btn{
+    width: 296px;
+    height: 54px;
+    background-color: #ffd61a;
+    color: #ffffff;
+    font-size: 18px;
+    border: solid 2px #ffd61a;
+    cursor: pointer;
+    margin-bottom: 140px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 変化を滑らかに */
+}
+.form__btn:hover{
+    background-color: #ffffff;
+    color: #ffd61a;
+}
+
+
+/* フッター */
+.footer{
+    background-color: #707070;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 0;
+}
+
+
+/* 2. ボタンを右下に常駐させる */
+.to-top-btn {
+  position: fixed;
+  bottom: 20px; /* 下からの距離 */
+  right: 20px;  /* 右からの距離 */
+  width: 80px;  /* 画像を表示したい横幅 */
+  height: 80px; /* 画像を表示したい縦幅 */
+  z-index: 9999;
+}
+
+/* 3. 画像をボタンの枠にぴったり収める */
+.to-top-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+
+/* メディアクエリー */
+@media screen and (max-width:768px) {
+
+/* ヘッダー部分 */
+.header{
+    display: block;
+    justify-content: center;
+}
+
+.header__logo__item {
+    width: 320px;          /* ロゴの大きさ調整 */
+    margin: 20px auto;      /* ロゴ 上下に隙間あけ中央に */
+}
+
+.header__nav {
+    margin: 20px auto;
+}
+
+.header__nav-item {
+    justify-content: center;   /* ナビの文字の間に隙間 */
+    align-items: center;
+    column-gap: 20px;
+}
+
+/* course */
+.course__card__item{
+    flex-direction: column;    /* コースの画像とテキストを縦並びに */
+}
+
+
+/* access */
+.access__info{
+    width: 350px;
+}
+
+.access__info__text{
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+
+/* CONTACT */
+.form__item{
+    flex-direction: column;
+    align-items: start;
+}
+ 
+.form__item__select-br{
+    display: none;      /* セレクトボックステキストの改行無効 */
+}
+
+.form__item__check-br{
+    display: block;         /* 文章とチェックボックステキストの強制改行 */
+    padding-left: 2em;      /* 強制インデント */
+}
+
+.form__item__title{
+    width: 300px;        /* タイトル部の横幅 */
+}
+
+.form__item__parts{
+    width: 300px;       /* フォームパーツ部の横幅 */
+}
+
+.up-ambition{
+    margin-bottom: 15px;  /* 志望動機テキスト上寄せ */
+}
+
+.form__item__parts__text{
+    width: 300px;       /* 名前・カナ・メアドの大きさと隙間調整 */
+}
+
+.form__item__parts_select{
+    width: 308px;       /* セレクトボックスの大きさと隙間調整 */    
+}
+
+.form__item__parts_area{
+    width: 300px;       /* 詳細エリアの大きさと隙間調整 */
+}
+
+}
